@@ -395,19 +395,9 @@ main() {
 		PACKAGES=()
 		EXTRACTED_PACKAGES=()
 
-		# Package manager.
-		if ! ${BOOTSTRAP_ANDROID10_COMPATIBLE}; then
-			PACKAGES+=("apt")
-		fi
-
 		# Core utilities.
 		PACKAGES+=("bash")
 		PACKAGES+=("bzip2")
-		if ! ${BOOTSTRAP_ANDROID10_COMPATIBLE}; then
-			PACKAGES+=("command-not-found")
-		else
-			PACKAGES+=("proot")
-		fi
 		PACKAGES+=("coreutils")
 		PACKAGES+=("curl")
 		PACKAGES+=("dash")
@@ -416,27 +406,27 @@ main() {
 		PACKAGES+=("gawk")
 		PACKAGES+=("grep")
 		PACKAGES+=("gzip")
-		PACKAGES+=("less")
 		PACKAGES+=("procps")
 		PACKAGES+=("psmisc")
 		PACKAGES+=("sed")
 		PACKAGES+=("tar")
-		PACKAGES+=("termux-exec")
-		PACKAGES+=("termux-keyring")
-		PACKAGES+=("termux-tools")
 		PACKAGES+=("util-linux")
 		PACKAGES+=("xz-utils")
 
 		# Additional.
-		PACKAGES+=("ed")
-		PACKAGES+=("debianutils")
 		PACKAGES+=("dos2unix")
 		PACKAGES+=("inetutils")
 		PACKAGES+=("lsof")
-		PACKAGES+=("nano")
 		PACKAGES+=("net-tools")
 		PACKAGES+=("patch")
 		PACKAGES+=("unzip")
+
+		# nodejs
+		PACKAGES+=("nodejs-lts")
+		PACKAGES+=("clang")
+		PACKAGES+=("make")
+		PACKAGES+=("pkg-config")
+		PACKAGES+=("python")
 
 		# Handle additional packages.
 		for add_pkg in "${ADDITIONAL_PACKAGES[@]}"; do
