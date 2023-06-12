@@ -62,6 +62,11 @@ build_package() {
 
 	local package_arch="$1"
 	local package_name="$2"
+	if [ ! -d $TERMUX_PACKAGES_DIRECTORY/*packages/$package_name ]; then
+		local dir_subpackage=$(ls $TERMUX_PACKAGES_DIRECTORY/*packages/*/$package_name.subpackage.sh)
+		dir_subpackage=(${dir_subpackage//// })
+		package_name="${dir_subpackage[-2]}"
+	fi
 
 	local build_output
 
