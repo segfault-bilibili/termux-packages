@@ -17,7 +17,8 @@ RUN mkdir /tmp/build
 COPY ./build/termux_download.sh /tmp/build/
 
 # Setup needed packages and the Android SDK and NDK:
-RUN apt-get update && \
+RUN sed -E -i 's/(archive|security)\.ubuntu\.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list && \
+    apt-get update && \
 	apt-get -yq upgrade && \
 	apt-get install -yq sudo lsb-release software-properties-common && \
 	useradd -u 1001 -U -m -s /bin/bash builder && \
