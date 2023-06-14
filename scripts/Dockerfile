@@ -8,6 +8,8 @@ FROM ubuntu:22.04
 
 # Fix locale to avoid warnings:
 ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL C
 
 # Needed for setup:
 COPY ./setup-ubuntu.sh ./setup-android-sdk.sh ./properties.sh ./openjdk-r-ppa.gpg /tmp/
