@@ -1,6 +1,6 @@
 termux_step_setup_variables() {
 	: "${TERMUX_ARCH:="aarch64"}" # arm, aarch64, i686 or x86_64.
-	: "${TERMUX_OUTPUT_DIR:="${TERMUX_SCRIPTDIR}/output"}"
+	: "${TERMUX_OUTPUT_DIR:="${TERMUX_SCRIPTDIR}/output/current-arch"}"
 	: "${TERMUX_DEBUG_BUILD:="false"}"
 	: "${TERMUX_FORCE_BUILD:="false"}"
 	: "${TERMUX_FORCE_BUILD_DEPENDENCIES:="false"}"
