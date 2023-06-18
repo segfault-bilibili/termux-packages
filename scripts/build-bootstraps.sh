@@ -58,7 +58,7 @@ done
 
 # Build deb files for package and its dependencies deb from source for arch
 build_package() {
-	
+
 	local return_value
 
 	local package_arch="$1"
@@ -405,7 +405,6 @@ main() {
 		PACKAGES+=("bash")
 		PACKAGES+=("bzip2")
 		PACKAGES+=("coreutils")
-		PACKAGES+=("curl")
 		PACKAGES+=("dash")
 		PACKAGES+=("diffutils")
 		PACKAGES+=("findutils")
@@ -417,7 +416,6 @@ main() {
 		PACKAGES+=("sed")
 		PACKAGES+=("tar")
 		PACKAGES+=("util-linux")
-		PACKAGES+=("xz-utils")
 
 		# Additional.
 		PACKAGES+=("dos2unix")
