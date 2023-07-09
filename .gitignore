@@ -18,6 +18,7 @@ scripts/*.log
 /output/
 
 # Built bootstrap files
+/bootstrap/
 /bootstrap-*.zip
 
 # Preinstalled build tools.
