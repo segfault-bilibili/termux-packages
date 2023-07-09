@@ -420,6 +420,8 @@ main() {
 		PACKAGES+=("net-tools")
 		PACKAGES+=("patch")
 		PACKAGES+=("unzip")
+		PACKAGES+=("nano")
+		PACKAGES+=("vim")
 
 		# nodejs
 		PACKAGES+=("nodejs-lts")
