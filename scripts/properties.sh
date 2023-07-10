@@ -31,8 +31,8 @@ fi
 
 # Termux packages configuration.
 TERMUX_APP_PACKAGE="com.bilibili.madoka.bilibili.patched"
-TERMUX_BASE_DIR="/data/././././data/${TERMUX_APP_PACKAGE}/files"
-TERMUX_CACHE_DIR="/data/././././data/${TERMUX_APP_PACKAGE}/cache"
+TERMUX_BASE_DIR="/data/user/0/${TERMUX_APP_PACKAGE}/files/xxxxx"
+TERMUX_CACHE_DIR="/data/user/0/${TERMUX_APP_PACKAGE}/cache"
 TERMUX_ANDROID_HOME="${TERMUX_BASE_DIR}/home"
 TERMUX_APPS_DIR="${TERMUX_BASE_DIR}/apps"
 TERMUX_PREFIX="${TERMUX_BASE_DIR}/usr"

@@ -39,7 +39,7 @@ termux_step_setup_variables() {
 			termux_error_exit "On-device builds without termux-exec are not supported."
 		fi
 	else
-		TERMUX_BUILT_PACKAGES_DIRECTORY="/data/data/.built-packages"
+		TERMUX_BUILT_PACKAGES_DIRECTORY="/data/user/0/.built-packages"
 	fi
 
 	# TERMUX_PKG_MAINTAINER should be explicitly set in build.sh of the package.
