@@ -399,7 +399,27 @@ main() {
 
 		# Core utilities.
 		PACKAGES+=("bash")
+		PACKAGES+=("bzip2")
+		PACKAGES+=("coreutils")
 		PACKAGES+=("dash")
+		PACKAGES+=("diffutils")
+		PACKAGES+=("findutils")
+		PACKAGES+=("gawk")
+		PACKAGES+=("grep")
+		PACKAGES+=("gzip")
+		PACKAGES+=("procps")
+		PACKAGES+=("psmisc")
+		PACKAGES+=("sed")
+		PACKAGES+=("tar")
+		PACKAGES+=("util-linux")
+
+		# Additional.
+		PACKAGES+=("dos2unix")
+		PACKAGES+=("inetutils")
+		PACKAGES+=("lsof")
+		PACKAGES+=("net-tools")
+		PACKAGES+=("patch")
+		PACKAGES+=("unzip")
 
 		# nodejs
 		PACKAGES+=("nodejs-lts")
