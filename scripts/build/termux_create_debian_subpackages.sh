@@ -111,8 +111,12 @@ termux_create_debian_subpackages() {
 		# Create control.tar.xz
 		tar -cJf "$SUB_PKG_PACKAGE_DIR/control.tar.xz" -H gnu .
 
+		source "${TERMUX_SCRIPTDIR}/utils/package/package.sh"
+		local TERMUX_BUILT_PACKAGE_FILENAME
+		package__set_built_package_filename_env "$SUB_PKG_NAME" "$TERMUX_PKG_FULLVERSION" "$SUB_PKG_ARCH" "apt" "$DEBUG"
+		TERMUX_SUBPKG_DEBFILE="${TERMUX_OUTPUT_DIR}/${TERMUX_BUILT_PACKAGE_FILENAME}"
+
 		# Create the actual .deb file:
-		TERMUX_SUBPKG_DEBFILE=$TERMUX_OUTPUT_DIR/${SUB_PKG_NAME}${DEBUG}_${TERMUX_PKG_FULLVERSION}_${SUB_PKG_ARCH}.deb
 		test ! -f "$TERMUX_COMMON_CACHEDIR/debian-binary" && echo "2.0" > "$TERMUX_COMMON_CACHEDIR/debian-binary"
 		${AR-ar} cr "$TERMUX_SUBPKG_DEBFILE" \
 				   "$TERMUX_COMMON_CACHEDIR/debian-binary" \

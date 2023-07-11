@@ -5,37 +5,14 @@ termux_step_create_pacman_package() {
 	# From here on TERMUX_ARCH is set to "all" if TERMUX_PKG_PLATFORM_INDEPENDENT is set by the package
 	[ "$TERMUX_PKG_PLATFORM_INDEPENDENT" = "true" ] && TERMUX_ARCH=any
 
-	# Configuring the selection of a copress for a batch.
-	local COMPRESS
-	local PKG_FORMAT
-	case $TERMUX_PACMAN_PACKAGE_COMPRESSION in
-		"gzip")
-			COMPRESS=(gzip -c -f -n)
-			PKG_FORMAT="gz";;
-		"bzip2")
-			COMPRESS=(bzip2 -c -f)
-			PKG_FORMAT="bz2";;
-		"zstd")
-			COMPRESS=(zstd -c -z -q -)
-			PKG_FORMAT="zst";;
-		"lrzip")
-			COMPRESS=(lrzip -q)
-			PKG_FORMAT="lrz";;
-		"lzop")
-			COMPRESS=(lzop -q)
-			PKG_FORMAT="lzop";;
-		"lz4")
-			COMPRESS=(lz4 -q)
-			PKG_FORMAT="lz4";;
-		"lzip")
-			COMPRESS=(lzip -c -f)
-			PKG_FORMAT="lz";;
-		"xz" | *)
-			COMPRESS=(xz -c -z -)
-			PKG_FORMAT="xz";;
-	esac
-
-	local PACMAN_FILE=$TERMUX_OUTPUT_DIR/${TERMUX_PKG_NAME}${DEBUG}-${TERMUX_PKG_FULLVERSION_FOR_PACMAN}-${TERMUX_ARCH}.pkg.tar.${PKG_FORMAT}
+	# Configuring the selection of a compress for a batch.
+	source "${TERMUX_SCRIPTDIR}/utils/package/package.sh"
+	local TERMUX_PACMAN_COMPRESS
+	local TERMUX_PACPAM_PKG_SUFFIX
+	package__set_pacman_compress_env
+	local TERMUX_BUILT_PACKAGE_FILENAME
+	package__set_built_package_filename_env "$TERMUX_PKG_NAME" "$TERMUX_PKG_FULLVERSION_FOR_PACMAN" "$TERMUX_ARCH" "pacman" "$DEBUG" "$TERMUX_PACPAM_PKG_SUFFIX"
+	local PACMAN_FILE="${TERMUX_OUTPUT_DIR}/${TERMUX_BUILT_PACKAGE_FILENAME}"
 
 	local BUILD_DATE
 	BUILD_DATE=$(date +%s)
@@ -119,6 +96,6 @@ termux_step_create_pacman_package() {
 		--null --files-from - --exclude .MTREE | \
 		gzip -c -f -n > .MTREE
 	printf '%s\0' **/* | bsdtar --no-fflags -cnf - --null --files-from - | \
-		$COMPRESS > "$PACMAN_FILE"
+		$TERMUX_PACMAN_COMPRESS > "$PACMAN_FILE"
 	shopt -u dotglob globstar
 }

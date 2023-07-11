@@ -44,7 +44,12 @@ termux_step_create_debian_package() {
 	tar -cJf "$TERMUX_PKG_PACKAGEDIR/control.tar.xz" -H gnu .
 
 	test ! -f "$TERMUX_COMMON_CACHEDIR/debian-binary" && echo "2.0" > "$TERMUX_COMMON_CACHEDIR/debian-binary"
-	TERMUX_PKG_DEBFILE=$TERMUX_OUTPUT_DIR/${TERMUX_PKG_NAME}${DEBUG}_${TERMUX_PKG_FULLVERSION}_${TERMUX_ARCH}.deb
+
+	source "${TERMUX_SCRIPTDIR}/utils/package/package.sh"
+	local TERMUX_BUILT_PACKAGE_FILENAME
+	package__set_built_package_filename_env "$TERMUX_PKG_NAME" "$TERMUX_PKG_FULLVERSION" "$TERMUX_ARCH" "apt" "$DEBUG"
+	TERMUX_PKG_DEBFILE="${TERMUX_OUTPUT_DIR}/${TERMUX_BUILT_PACKAGE_FILENAME}"
+
 	# Create the actual .deb file:
 	${AR-ar} cr "$TERMUX_PKG_DEBFILE" \
 	       "$TERMUX_COMMON_CACHEDIR/debian-binary" \
