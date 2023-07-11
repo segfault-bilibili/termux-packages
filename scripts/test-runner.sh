@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/bash
+#!/data/user/0/com.termux/files/xxxxx/usr/bin/bash
 
 if [ $# != 1 ]; then
 	echo "Specify package to run tests for as only argument"
