@@ -7,7 +7,7 @@
 #include <wayland-client.h>
 
 #ifndef TERMUX_PREFIX
-# define TERMUX_PREFIX "/data/data/com.termux/files/usr"
+# define TERMUX_PREFIX "/data/user/0/com.termux/files/xxxxx/usr"
 #endif
 
 #ifndef TERMUX_X11_DIR

@@ -4,7 +4,7 @@ Fix run-time error on aarch64:
 
 ```
 $ protoc
-CANNOT LINK EXECUTABLE "protoc": cannot locate symbol "_ZN6google8protobuf8internal20VarintParseSlowArm32EPKcPjm" referenced by "/data/data/com.termux/files/usr/lib/libprotoc.so"...
+CANNOT LINK EXECUTABLE "protoc": cannot locate symbol "_ZN6google8protobuf8internal20VarintParseSlowArm32EPKcPjm" referenced by "/data/user/0/com.termux/files/xxxxx/usr/lib/libprotoc.so"...
 Aborted
 ```
 
